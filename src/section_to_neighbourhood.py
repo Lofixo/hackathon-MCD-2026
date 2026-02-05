@@ -11,6 +11,7 @@ data_dir = os.path.join(base_dir, "data")
 SECCIONS_SHP = os.path.join(data_dir, "seccions_girona", "Seccions.shp")
 BARRIS_DBF = os.path.join(data_dir, "barris_girona", "Barris.dbf")
 OUTPUT_CSV = os.path.join(data_dir, "section_to_neighbourhood_clean.csv")
+OUTPUT_GPKG = os.path.join(data_dir, "section_to_neighbourhood_clean.gpkg")  # amb geometria
 
 # =========================
 # 1. Carrega les dades
@@ -64,10 +65,10 @@ seccions_unics['census_tract_IDESCAT'] = '179072' + seccions_unics['district_id'
 # 8. Selecciona les columnes finals
 # =========================
 
-seccions_unics = seccions_unics[
-    ['DISTRICTE', 'SECCIÓ', 'district_id', 'section_id',
-     'census_tract_INE', 'census_tract_IDESCAT', 'BARRIS']
-]
+cols = ['DISTRICTE', 'SECCIÓ', 'district_id', 'section_id',
+        'census_tract_INE', 'census_tract_IDESCAT', 'BARRIS', 'geometry']
+
+seccions_unics = seccions_unics[cols]
 
 # =========================
 # 9. Ordena per districte i secció
@@ -76,10 +77,15 @@ seccions_unics = seccions_unics[
 seccions_unics = seccions_unics.sort_values(by=['DISTRICTE','SECCIÓ'])
 
 # =========================
-# 10. Guarda CSV final
+# 10. Guarda CSV i GeoPackage amb geometria
 # =========================
 
-seccions_unics.to_csv(OUTPUT_CSV, index=False)
+# CSV sense geometria (només codis i barri)
+seccions_unics.drop(columns='geometry').to_csv(OUTPUT_CSV, index=False)
+
+# GeoPackage amb geometria
+seccions_unics.to_file(OUTPUT_GPKG, layer='section_to_neighbourhood', driver='GPKG')
 
 print("✔ Assignació única, neta i ordenada completada!")
-print(f"Fitxer creat: {OUTPUT_CSV}")
+print(f"CSV creat: {OUTPUT_CSV}")
+print(f"GeoPackage creat amb geometria: {OUTPUT_GPKG}")
