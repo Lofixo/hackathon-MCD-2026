@@ -1,1 +1,1 @@
-Hackató MCD 2026  - Donicellas
+Hackató MCD 2026 - Donicellas
