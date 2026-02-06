@@ -58,8 +58,8 @@ seccions_unics = interseccions.loc[idx]
 seccions_unics['district_id'] = seccions_unics['DISTRICTE'].astype(int).astype(str).str.zfill(2)
 seccions_unics['section_id'] = seccions_unics['SECCIÓ'].astype(int).astype(str).str.zfill(3)
 
-seccions_unics['census_tract_INE'] = '17907' + seccions_unics['district_id'] + seccions_unics['section_id']
-seccions_unics['census_tract_IDESCAT'] = '179072' + seccions_unics['district_id'] + seccions_unics['section_id']
+seccions_unics['census_tract_INE'] = '17079' + seccions_unics['district_id'] + seccions_unics['section_id']
+seccions_unics['census_tract_IDESCAT'] = '170792' + seccions_unics['district_id'] + seccions_unics['section_id']
 
 # =========================
 # 8. Selecciona les columnes finals
