@@ -10,7 +10,7 @@ data_dir = os.path.join(base_dir, "data")
 
 REAL_CSV = os.path.join(data_dir, "initial", "girona_for_rent.csv")
 SYNTHETIC_CSV = os.path.join(data_dir, "initial", "girona_for_rent_synthetic.csv")
-OUTPUT_CSV = os.path.join(data_dir, "girona_for_rent_combined_clean.csv")
+OUTPUT_CSV = os.path.join(data_dir, "interim", "girona_for_rent_combined_clean.csv")
 
 # =========================
 # 1. Carrega datasets

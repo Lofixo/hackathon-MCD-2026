@@ -22,9 +22,9 @@ import pandas as pd
 base_dir = os.path.abspath("..")  # assume we are in src/ or similar
 data_dir = os.path.join(base_dir, "data")
 
-RENT_CLEAN_CSV = os.path.join(data_dir, "girona_for_rent_combined_clean.csv")
+RENT_CLEAN_CSV = os.path.join(data_dir, "interim", "girona_for_rent_combined_clean.csv")
 ENERGY_CSV = os.path.join(data_dir, "initial", "girona_energy_certificates.csv")
-OUTPUT_CSV = os.path.join(data_dir, "girona_for_rent_with_energy.csv")
+OUTPUT_CSV = os.path.join(data_dir, "interim", "girona_for_rent_with_energy.csv")
 
 # =========================
 # LOAD DATASETS
